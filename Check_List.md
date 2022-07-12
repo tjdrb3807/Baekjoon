@@ -27,3 +27,42 @@
     }
     ```
 ---
+
+
+* ## 최대공약수와 최소공배수(No.2609)
+ 
+    <img src=img/img03.png width=800, height=250>   
+    <img src=img/img04.png width=800, height=100>  
+
+    ```Java
+    import java.util.*;
+    import java.io.*;
+
+    public class Main {
+        public static void main(String[] arsg) throws IOException {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+
+            StringBuilder sb = new StringBuilder();
+            sb.append(getGCD(x, y));
+            sb.append("\n");
+            sb.append(getLCM(x, y));
+
+            System.out.println(sb);
+        }
+
+        static int getGCD(int x, int y) {
+            if (x % y == 0) {
+                return y;
+            } else {
+                return getGCD(y, x % y);
+            }
+        }
+
+        static int getLCM(int x, int y) {
+            return (x * y) / getGCD(x, y);
+        }
+    }
+    ```
