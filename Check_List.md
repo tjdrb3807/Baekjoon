@@ -1,7 +1,7 @@
 * ## 약수(No.1037)
  
-    <img src=img/img01.png width=800, height=250>   
-    <img src=img/img02.png width=800, height=450>   
+    <img src=img/img01.png>   
+    <img src=img/img02.png>   
 
     ```Java
     import java.util.*;
@@ -31,8 +31,8 @@
 
 * ## 최대공약수와 최소공배수(No.2609)
  
-    <img src=img/img03.png width=800, height=250>   
-    <img src=img/img04.png width=800, height=100>  
+    <img src=img/img03.png>   
+    <img src=img/img04.png>  
 
     ```Java
     import java.util.*;
