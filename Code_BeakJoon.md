@@ -177,3 +177,54 @@
         }
     }
     ```
+
+---
+
+* ## 날짜 계산(No.1476)
+
+    <br>
+
+    <img src=img/img05.png>   
+    <img src=img/img06.png>  
+
+    <br>
+
+    ```Java
+    import java.io.*;
+    import java.util.*;
+    
+    public class Main {
+        public static void main(String[] args) throws IOExcpetion {
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+            int E = Integer.parseInt(st.nextToken());
+            int S = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
+
+            int year = 0;
+            int e = 0;
+            int s = 0;
+            int m = 0;
+
+            while (true) {
+                year++;
+                e++;
+                s++;
+                m++;
+
+                e = e == 16 ? 1 : e;
+                s = s == 29 ? 1 : s;
+                m = m == 20 ? 1 : m;
+
+                if (e == E && s == S && m == M) break;
+            }
+
+            System.out.println(year);
+        }
+    }
+    ```
+
+
+
