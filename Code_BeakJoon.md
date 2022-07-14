@@ -275,3 +275,83 @@ public class Main {
     }
 }
 ```
+
+---
+
+<br>
+
+## N과 M(2)
+
+<br>
+
+<img src="img/img09.png">
+
+<br>
+
+<img src="img/img10.png">
+
+<br>
+
+```Java
+/*
+--- 출력 예시 ---             --- 알고리즘 ---
+* 1 1 (x)                   * 시작점을 갖는 변수를 지정한다
+* 1 2
+* 1 3
+* 1 4
+* 2 1 (x)
+* 2 2 (x)
+* 2 3
+* 2 4
+* 3 1 (x)
+* 3 2 (x)
+* 3 3 (x)
+* 3 4
+* 4 1 (x)
+* 4 2 (x)
+* 4 3 (x)
+* 4 4 (x)
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static int N;
+    public static int M;
+    public static int[] arr;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
+
+        FDS(1, 0);
+
+        System.out.println(sb);
+    }
+
+    public static void FDS(int at, int depth) {
+
+        if (depth == M) {
+            for (int i : arr) {
+                sb.appedn(i).append(' ');
+            }
+            sb.append('\n');
+
+            return;
+        }
+
+        for (int i = at; i <= N; i++) {
+            arr[depth] = i;
+            FDS(i + 1, depth + 1;)
+        }
+    }
+}
+```
