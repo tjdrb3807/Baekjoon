@@ -226,5 +226,52 @@
     }
     ```
 
+---
 
+* ## N과 M(1)
 
+```Java
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static int[] arr;
+    public static boolean[] visit;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        arr = new int[M];
+        visit = new boolean[N];
+
+        DFS(M, N, 0);
+        System.out.println(sb);
+    }
+
+    public static void DFS(int M, int N, int depth) {
+        if (depth == M) {
+            for (int i : arr) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                arr[depth] = i + 1;
+                DFS(M, N, depth + 1);
+                visit[i] = false;
+            }
+        }
+    }
+}
+```
