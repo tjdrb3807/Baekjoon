@@ -355,3 +355,70 @@ public class Main {
     }
 }
 ```
+
+---
+
+<br>
+
+## N과 M(3)
+
+<br>
+
+<img src="img/img11.png">
+
+<br>
+
+<img src="img/img12.png">
+
+<br>
+
+<img src="img/img13.png">
+
+<br>
+
+```Java
+/*
+* --- 알고리즘 ---
+* 같은 수의 중복을 허용하므로 N과 M(1)에서 노드의 유효성(visit)을 제외하면 될것이라 생각
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static int[] arr;
+    public static StringBuilder sb = new StringBuilser();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
+
+        FDS(M, N, 0);
+
+        System.out.println(sb);
+    }
+
+    public static void FDS(int M, int N, int depth) {
+
+        if (depth == M) {
+            for (int i : arr) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            arr[depth] = i + 1;
+            FDS(M, N, depth + 1);
+        }
+    }
+}
+```
