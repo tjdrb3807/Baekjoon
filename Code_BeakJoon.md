@@ -155,7 +155,7 @@
 
             for (int i = 0; i < arr.length; i++) {
                 for (int j = 1; j < arr.length - 1; j++) {
-                    if (arr[i] + arr[j] == total - 1) {
+                    if (arr[i] + arr[j] == total - 100) {
                         spyA = arr[i];
                         spyB = arr[j];
                     }
