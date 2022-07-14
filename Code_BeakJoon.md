@@ -332,12 +332,12 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
         arr = new int[M];
 
-        FDS(1, 0);
+        DFS(1, 0);
 
         System.out.println(sb);
     }
 
-    public static void FDS(int at, int depth) {
+    public static void DFS(int at, int depth) {
 
         if (depth == M) {
             for (int i : arr) {
@@ -350,7 +350,7 @@ public class Main {
 
         for (int i = at; i <= N; i++) {
             arr[depth] = i;
-            FDS(i + 1, depth + 1;)
+            DFS(i + 1, depth + 1;)
         }
     }
 }
@@ -399,12 +399,12 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
         arr = new int[M];
 
-        FDS(M, N, 0);
+        DFS(M, N, 0);
 
         System.out.println(sb);
     }
 
-    public static void FDS(int M, int N, int depth) {
+    public static void DFS(int M, int N, int depth) {
 
         if (depth == M) {
             for (int i : arr) {
@@ -417,8 +417,73 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             arr[depth] = i + 1;
-            FDS(M, N, depth + 1);
+            DFS(M, N, depth + 1);
         }
     }
 }
 ```
+
+---
+
+<br>
+
+## N과 M(4)_No.15652
+
+<br>
+
+<img src="img/img14.png">
+
+<br>
+
+<img src="img/img15.png">
+
+<br>
+
+<img src="img/img16.png">
+
+<br>
+
+```Java
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static int N;
+    public static int M;
+    public static int[] arr;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
+
+        DFS(1, 0);
+
+        System.out.println(sb);
+    }
+
+    public static void DFS(int at, int depth) {
+
+        if (depth == M) {
+            for (int i : arr) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+
+            return;
+        }
+
+        for (int i = at; i <= N; i++) {
+            arr[depth] = i;
+            DFS(i, depth + 1);
+        }
+    }
+}
+```
+
