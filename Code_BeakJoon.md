@@ -487,3 +487,81 @@ public class Main {
 }
 ```
 
+---
+
+<br>
+
+## N과 M(5)_No.15654
+
+<br>
+
+<img src="img/img17.png">
+
+<br>
+
+<img src="img/img18.png">
+
+<br>
+
+<img src="img/img19.png">
+
+<br>
+
+```Java
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static int M;
+    public static int N;
+    public static int[] arr;
+    public static int[] numbers;
+    public static boolean[] visit;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLien());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+
+        arr = new int[M];
+        numbers = new int[N];
+        visit = new boolean[N];
+
+        st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(st.nextToken());
+        } 
+
+        Arrays.sort(numbers);
+        DFS(0);
+
+        System.out.println(sb);
+    }
+
+    public static void DFS(int depth) {
+        if (depth == M) {
+            for (int i : arr) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                arr[depth] = numbers[i];
+                DFS(depth + 1);
+                visit[i] = false;
+            }
+        }
+    }
+}
+```
+
