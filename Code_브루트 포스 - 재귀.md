@@ -47,6 +47,9 @@ d[4]를 생각할 떄
 
 이렇게 작은 문제로부터 구해진 문제를 자료구조에 저장을 해야하는데 이것을 `Memorization`라고 부른다.   
 
+<br>
+
+
 ```Java
 import java.util.*;
 import java.io.*;
