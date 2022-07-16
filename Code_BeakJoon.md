@@ -632,3 +632,83 @@ public class Main {
 }
 ```
 
+---
+
+<br>
+
+## N과 M(7)_No.15656
+
+<br>
+
+<img src="img/img22.png">
+
+<br>
+
+<img src="img/img23.png">
+
+<br>
+
+<img src="img/img24.png">
+
+<br>
+
+```Java
+/*
+* 수열 내에 숫자 중복 허용 O  -> boolean visit[] 사용할 필요 없음
+* 중복된 수열 혀용 X
+* 수열 오름차순 출력
+
+* ----- 알고리즘 -----
+* 반복분에서 DFS를 재귀호출하며, depth만 증가시켜준다
+*/
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static int N;
+    public static int M;
+    public static int[] arr;
+    public static int[] numbers;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        
+        arr = new int[M];
+        numbers = new int[N];
+
+        st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(numbers);
+        DFS(0);
+
+        System.out.println(sb);
+    }
+
+    public static void DFS(int depth) {
+        if (depth == M) {
+            for (int i : arr) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            arr[depth] = numbers[i];
+            DFS(depth + 1);
+        }
+    }
+}
+```
