@@ -565,3 +565,70 @@ public class Main {
 }
 ```
 
+---
+
+<br>
+
+## N과 M(6)_No.15655
+
+<br>
+
+<img src="img/img20.png">
+
+<br>
+
+<img src="img/img21.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static int N;
+    public static int M;
+    public static int[] arr;
+    public static int[] numbers;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
+        numbers = new int[N];
+
+        st = new StringTokenizer(br.readLine());
+        
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseIne(st.nextToken());
+        }
+
+        Arrays.sort(numbers);
+        DFS(0, 0);
+
+        System.out.println(sb);
+    }
+
+    public static void DFS(int at, int depth) {
+        if (depth == M) {
+            for (int i : arr) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
+
+        for (int i = at; i < N; i++) {
+            arr[depth] = numbers[i];
+            DFS(i + 1; depth + 1);
+        }
+    }
+}
+```
+
