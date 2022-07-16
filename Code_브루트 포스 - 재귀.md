@@ -74,11 +74,115 @@ public class Main {
 
             for (int j = 4; j <= n; j++) {
                 arr[j] = arr[j - 1] + arr[j - 2] + arr[j - 3];
-                sb.append(arr[j]).append('\n');
             }
+            sb.append(arr[n]).append('\n');
         }
 
         System.out.println(sb);
+    }
+}
+```
+
+---
+
+<br>
+
+## 암호 만들기(No.1759)
+
+<br>
+
+<img src="img/img33.png">
+
+<br>
+
+<img src="img/img34.png">
+
+<br>
+
+### 문제점   
+
+1. 문제를 꼼꼼하게 읽도록한다... 모음의 개수와 자음의 개수 조건 놓침
+2. `StringBuilder.append() 에서 char 를 형변환하지 않고 넘기면 숫자가 입력된다... 주의할것!!`   
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static int L;
+    public static int C;
+    public static char[] arr;
+    public static char[] text;
+    public static boolean[] visit;
+    public static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        L = Integer.parseIne(st.nextToken());
+        C = Integer.parseInt(st.nextToken());
+        
+        arr = new char[L];
+        text = new char[C];
+        visit = new boolean[C];
+
+        st = new StringBuilder(br.readLine());
+        int index = 0;
+
+        while (st.hasNextToken()) {
+            text[index] = st.nextToken();
+            index++;
+        }
+
+        Arrays.sort(text);
+        DFS(0, 0);
+
+        System.out.println(sb);
+    }
+
+    public static void DFS(int at, int depth) {
+        if (depth == L) {
+            if (isValid()) {
+                for (int i : arr) {
+                    sb.append((char)i);
+                }
+                sb.append('\n');
+                return;
+            }
+        }
+
+        for (int i = at; i < C; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                arr[depth] = text[i];
+                DFS(i + 1, depth + 1);
+                visit[i] = false;
+            }
+        }
+    }
+
+    public static boolean isValid() {
+        int moCount = 0;
+        int jaCount = 0;
+
+        for (int i : arr) {
+            if (i == 'a' || i == 'e' || i == 'e' || i == 'o' || i == 'u') {
+                moCount++;
+            } else {
+                jaCount++;
+            }
+        }
+
+        if (moCount >= 1 && jaCount <= 2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ```
