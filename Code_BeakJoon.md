@@ -712,3 +712,25 @@ public class Main {
     }
 }
 ```
+
+---
+
+<br>
+
+## N과 M(8)_No.15657
+
+<br>
+
+<img src="img/img25.png">
+
+<br>
+
+<img src="img/img26.png">
+
+<br>
+
+<img src="img/img27.png">
+
+<br>
+
+```Java
