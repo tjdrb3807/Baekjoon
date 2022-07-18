@@ -281,3 +281,123 @@ public class Main {
 }
 ```
 
+---
+
+<br>
+
+## 부등호(No.2529)
+
+<br>
+
+<img src="img/img41.png">
+
+<br>
+
+<img src="img/img42.png">
+
+<br>
+
+---
+
+<br>
+
+## 다음 순열(No.10972)
+
+<br>
+
+<img src="img/img43.png">
+
+<br>
+
+<img src="img/img44.png">
+
+<br>
+
+### 알고리즘   
+
+<br>
+
+다음과 같은 순열이 있다고 가정해보자.   
+
+P = [4, 6, 5, 7, 3, 2, 1]   
+
+위 순열 다음에 오는 순열은 무엇일까? 바꿔 말해, 위 순열 4657321 다음으로 큰 수는 무엇일까?   
+
+465 7321 <-- 7321만 봤을 때, 해당 수는 조합에서의 가장 큰 수이다. (내림 차순 나열)   
+
+즉, 7321까지는 내림차순으로 그 다음 수가 없기 때문에 처음으로 내림차순이 꺾이는 지점인 5를 swap 해야한다.   
+
+5와 그 뒤의 7321 중 하나를 swap 해야 하는데 어떤 수가 좋을것인가?   
+
+바로 다음으로 큰 수여야하니까 5보다 큰 최소값일 것이다. 즉, 5와 7을 swap 해야한다.   
+
+467 5321 로 바뀐 후 다음으로 내림차순으로 되어있는 5321을 오름차순인 1235로 바꾸면 다음 순열이 된다.   
+
+<br>
+
+```Java
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static int N;
+    static int[] permutation;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        N = Integer.parseInt(br.readLine());
+        permutation = new int[N];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < permutation.length; i++) {
+            permutation[i] = Integer.parseInt(st.nextToken());
+        }
+
+        if (nextPermutation) {
+            for (int i = 0; i < N; i++) {
+                sb.append(permutation[i]).append(' ');
+            }
+        } else {
+            sb.append(-1);
+        }
+
+        System.out.println(sb);
+    }
+
+    static boolean nextPermutation() {
+        int i = permutation.length - 1;
+        while (i > 0 && permutation[i - 1] >= permutation[i]) i--;
+
+        if (i <= 0) return false;
+
+        int j = permutation.length - 1;
+        while (permutation[j] <= permutation[i - 1]) j--;
+
+        swap(i - 1, j);
+
+        j = permutation.length - 1;
+        while (i < j) {
+            swap(i, j);
+            i++;
+            j--;
+
+        }
+
+
+    }
+
+    static void swap(int index01, int index02) {
+        int temp = permutation[index01];
+        permutation[index01] = permutation[index02];
+        permutation[index02] = temp;
+    }
+}
+```
+
+
+
+
