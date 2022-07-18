@@ -518,5 +518,79 @@ public class Main {
 }
 ```
 
+---
+
+## 차이를 최대로(No.10819)
+
+<br>
+
+<img src="img/img49.png">
+
+<br>
+
+<img src="img/img50.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    static int N;
+    static int result;
+    static int[] A;
+    static int[] arr;
+    static boolean[] visit;
+    
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        A = new int[N];
+        arr = new int[N];
+        visit = new boolean[N];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int index = 0;
+        while (st.hasMoreTokens()) {
+            A[index] = Integer.parseInt(st.nextToken());
+            index++;
+        }
+
+        DFS(0);
+
+        System.out.println(result);
+    }
+
+    static void DFS(int depth) {
+        if (depth == N) {
+            result = getMaximum();
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                arr[depth] = A[i];
+                DFS(depth + 1);
+                visit[i] = false;
+            }
+        }
+    }
+
+    static int getMaximum() {
+        int sum = 0;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            sum += Math.abs(arr[i] - arr[i + 1]);
+        }
+
+        return Math.max(sum, result);
+    }
+}
+```
 
 
