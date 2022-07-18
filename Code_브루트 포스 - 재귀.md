@@ -381,6 +381,142 @@ public class Main {
 }
 ```
 
+---
+
+## 이전 순열(No.10973)
+
+<br>
+
+<img src="img/img45.png">
+
+<br>
+
+<img src="img/img46.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    static int N;
+    static int[] permutation;
+    static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        permutation = new int[N];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < permutation.length; i++) {
+            permutation[i] = Integer.parseInt(st.nextToken());
+        }
+
+        if (beforePermutation()) {
+            for (int i : permutation) {
+                sb.append(i).append(' ');
+            }
+        } else {
+            sb. append(-1);
+        }
+
+        System.out.println(sb);
+    }
+
+    static boolean beforePermutation() {
+
+        int index01 = permutation.length - 1; 
+        // 내림차순 조건이 만족하지 안을경우 중지
+        while (index01 > 0 && permutation[index01] >= permutation[index01 - 1]) index01--;
+
+        if (index01 <= 0) return false;
+
+        int index02 = permutation.length - 1;
+        while (permutation[index02] >= permutation[index01 - 1]) index02--;
+
+        swap(index01 - 1, index02);
+
+        index02 = permutation.length - 1;
+        while (index01 < index02) {
+            swap(index01, index02);
+            index01++;
+            index02--;
+        }
+
+        return true;
+    }
+
+    static void swap(int index01, int index02) {
+        int temp = permutation[index01];
+        permutation[index01] = permutation[index02];
+        permutation[index02] = temp;
+    }
+}
+```
+
+---
+
+## 모든 순열(No.10974)
+
+<br>
+
+<img src="img/img47.png">
+
+<br>
+
+<img src="img/img48.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    
+    static int N;
+    static int[] permutation;
+    static boolean[] visit;
+    static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        permutation = new int[N];
+        visit = new boolean[N];
+
+        DFS(0);
+
+        System.out.println(sb);
+    }
+
+    static void DFS(int depth) {
+
+        if (depth == N) {
+            for (int i : permutation) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                permutation[depth] = i + 1;
+                DFS(depth + 1);
+                visit[i] = false;
+            }
+        }
+    }
+}
+```
 
 
 
