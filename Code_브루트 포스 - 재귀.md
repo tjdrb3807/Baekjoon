@@ -659,4 +659,78 @@ public class Main {
 }
 ```
 
+---
+
+## 로또(No.6603)
+
+<br>
+
+<img src="img/img53.png">
+
+<br>
+
+<img src="img/img54.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    static int k;
+    static int[] randomNumbers;
+    static int[] lottoNumbers = new int[6];
+    static boolean[] visit;
+    static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            k = Integer.parseInt(st.nextToken());
+
+            if (k == 0) break;
+
+            randomNumbers = new int[k];
+            visit = new boolean[k];
+
+            int index = 0;
+            while (st.hasMoreTokens()) {
+                randomNumbers[index] = Integer.parseInt(st.nextToken());
+                index++;
+            }
+
+            DFS(0, 0);
+            sb.append('\n');
+        }
+
+        System.out.println(sb);
+    }
+
+    static void DFS(int at, int depth) {
+
+        if (depth == 6) {
+            for (int i : lottoNumbers) {
+                sb.append(i).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
+
+        for (int i = at; i < k; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                lottoNumbers[depth] = randomNumbers[i];
+                DFS(i, depth + 1);
+                visit[i] = false;
+            }
+        }
+    }
+}
+```
+
 
