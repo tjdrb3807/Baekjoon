@@ -593,4 +593,70 @@ public class Main {
 }
 ```
 
+---
+
+## 외판원 순회2(No.10971)
+
+<br>
+
+<img src="img/img51.png">
+
+<br>
+
+<img src="img/img52.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    static int N;
+    static int[][] map;
+    static boolean[] visit;
+    static int cost = Integer.MAX_VALUE;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        map = new int[N][N];
+        visit = new boolean[N];
+
+        for (int i = 0; i < map.length; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < map[0].length; j++) {
+                map[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            visit[i] = true;
+            DFS(i, i, 0, 0);
+        }
+
+        System.out.println(cost);
+    }
+
+    static void DFS(int startCity, int nowCity, int depth, int sum) {
+        if (depth == N - 1) {
+            if (map[nowCity][startCity] != 0) {
+                sum += map[nowCity][startCity];
+                cost = Math.min(cost, sum);
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (!visit[i] && map[nowCity][i] > 0) {
+                visit[i] = true;
+                DFS(startCity, i, depth + 1, sum + map[nowCity][i]);
+                visit[i] = false;
+            }
+        }
+    }
+}
+```
+
 
