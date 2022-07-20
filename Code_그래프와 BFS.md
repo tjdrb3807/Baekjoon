@@ -69,3 +69,91 @@ public class Main {
     }
 }
 ```
+
+## 덱(No.10866)
+
+<br>
+
+<img src="img/img57.png">
+
+<br>
+
+<img src="img/img58.png">
+
+<br>
+
+<img src="img/img59.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        Deque<Integer> deque = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
+        int element;
+
+        while (N-- > 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String operator = st.nextToken();
+
+            switch (operator) {
+                case "push_front":
+                    element = Integer.parseInt(st.nextToken());
+                    deque.offerFirst(element);
+                    break;
+
+                case "push_back":
+                    element = Integer.parseInt(st.nextToken());
+                    deque.offerLast(element);
+                    break;
+
+                case "pop_front":
+                    if (deque.isEmpty()) sb.append(-1).append('\n');
+                    else {
+                        sb.append(deque.peekFirst()).append('\n');
+                        deque.pollFirst();
+                    }
+                    break;
+
+                case "pop_back":
+                    if (deque.isEmpty()) sb.append(-1).append('\n');
+                    else {
+                        sb.append(deque.peekLast()).append('\n');
+                        deque.pollLast();
+                    }
+                    break;
+
+                case "size":
+                    sb.append(deque.size()).append('\n');
+                    break;
+
+                case "empty":
+                    if (deque.isEmpty()) sb.append(1).append('\n');
+                    else sb.append(0).append('\n');
+                    break;
+
+                case "front":
+                    if (deque.isEmpty()) sb.append(-1).append('\n');
+                    else sb.append(deque.peekFirst()).append('\n');
+                    break;
+
+                case "back":
+                    if (deque.isEmpty()) sb.append(-1).append('\n');
+                    else sb.append(deque.peekLast()).append('\n');
+                    break;
+            }
+        }
+
+        System.out.println(sb);
+    }
+}
+```
