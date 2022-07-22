@@ -214,6 +214,8 @@ public class Main {
                 DFS(i, 0);
             }
         }
+
+        System.out.println(answer);
     }
 
     static void DFS(int startVertex, int depth) {
@@ -222,13 +224,13 @@ public class Main {
             return;
         }
 
-        visited[startIndex] = true;
+        visited[startVertex] = true;
 
         for (int i : graph[startVertex]) {
             int nextVertex = i;
 
             if (!visited[nextVertex]) {
-                DSF(nextVertex, depth + 1)
+                DFS(nextVertex, depth + 1);
             }
         }
 
