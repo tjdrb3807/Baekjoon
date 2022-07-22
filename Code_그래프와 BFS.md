@@ -157,3 +157,82 @@ public class Main {
     }
 }
 ```
+
+## ABCDE(No.13023)
+
+<br>
+
+<img src="img/img60.png">
+
+<br>
+
+<img src="img/img61.png">
+
+<br>
+
+<img src="img/img62.png">
+
+<br>
+
+```Java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    static List<Integer>[] graph;
+    static boolean[] visited;
+    static int answer = 0;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int vertex = Integer.parseInt(st.nextToken());
+        int edge = Integer.parseInt(st.nextToken());
+
+        graph = new ArrayList[vertex];
+        visited = new boolean[vertex];
+
+        for (int i = 0; i < vertex; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        while (edge-- > 0) {
+            st = new StringTokenizer(br.readLine());
+
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+
+            graph[a].add(b);
+            graph[b].add(a);
+        }
+
+        for (int i = 0; i < graph.length; i++) {
+            if (answer == 0) {
+                DFS(i, 0);
+            }
+        }
+    }
+
+    static void DFS(int startVertex, int depth) {
+        if (depth == 4) {
+            answer = 1;
+            return;
+        }
+
+        visited[startIndex] = true;
+
+        for (int i : graph[startVertex]) {
+            int nextVertex = i;
+
+            if (!visited[nextVertex]) {
+                DSF(nextVertex, depth + 1)
+            }
+        }
+
+        visited[startVertex] = false;
+    }
+}
+```
