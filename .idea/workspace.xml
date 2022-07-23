@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a528104f-b9f1-425a-b375-003837a817ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/No_1260.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Check_List.md" beforeDir="false" afterPath="$PROJECT_DIR$/Check_List.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code_그래프와 BFS.md" beforeDir="false" afterPath="$PROJECT_DIR$/Code_그래프와 BFS.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +35,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
     <configuration name="No_1260" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -58,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1658549257911</updated>
       <workItem from="1658549262328" duration="1000" />
-      <workItem from="1658549274871" duration="447000" />
+      <workItem from="1658549274871" duration="1413000" />
     </task>
     <servers />
   </component>
